@@ -36,7 +36,7 @@
             this.cboStopBits = new System.Windows.Forms.ComboBox();
             this.cboParity = new System.Windows.Forms.ComboBox();
             this.cboHandShaking = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.labelPort = new System.Windows.Forms.Label();
             this.labelBaudRates = new System.Windows.Forms.Label();
             this.labelDataBits = new System.Windows.Forms.Label();
@@ -124,14 +124,15 @@
             this.cboHandShaking.Size = new System.Drawing.Size(196, 24);
             this.cboHandShaking.TabIndex = 7;
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.Location = new System.Drawing.Point(424, 428);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 41);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(424, 428);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(85, 41);
+            this.btnSave.TabIndex = 8;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
             // labelPort
             // 
@@ -317,7 +318,7 @@
             this.Controls.Add(this.labelDataBits);
             this.Controls.Add(this.labelBaudRates);
             this.Controls.Add(this.labelPort);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cboHandShaking);
             this.Controls.Add(this.cboParity);
             this.Controls.Add(this.cboStopBits);
@@ -343,7 +344,7 @@
         private System.Windows.Forms.ComboBox cboStopBits;
         private System.Windows.Forms.ComboBox cboParity;
         private System.Windows.Forms.ComboBox cboHandShaking;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label labelPort;
         private System.Windows.Forms.Label labelBaudRates;
         private System.Windows.Forms.Label labelDataBits;

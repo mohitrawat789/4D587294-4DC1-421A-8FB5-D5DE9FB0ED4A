@@ -25,6 +25,8 @@ namespace Parking
             SetHandShake();
         }
 
+        #region Helper Methods
+
         private void SetHandShake()
         {
             //Handshake
@@ -109,6 +111,13 @@ namespace Parking
             }
 
             cboPorts.Text = comPortName;
+        }
+
+        #endregion
+
+        private void BtnSaveClick(object sender, EventArgs e)
+        {
+
         }
     }
 }
