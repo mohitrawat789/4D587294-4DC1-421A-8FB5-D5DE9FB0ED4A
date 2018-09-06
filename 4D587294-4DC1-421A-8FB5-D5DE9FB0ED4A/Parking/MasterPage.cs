@@ -117,7 +117,9 @@ namespace Parking
 
         private void BtnSaveClick(object sender, EventArgs e)
         {
-
+            Hide();
+            var masterPage = new HomePage();
+            masterPage.Show();
         }
     }
 }
