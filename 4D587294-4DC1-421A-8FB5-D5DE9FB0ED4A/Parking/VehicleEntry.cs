@@ -1,25 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Parking.Classes;
 
 namespace Parking
 {
     public partial class VehicleEntry : Form
     {
+        private readonly ParkingDatabaseFactory parkingDatabaseFactory;
+
         public VehicleEntry()
         {
             InitializeComponent();
+            parkingDatabaseFactory = new ParkingDatabaseFactory();
         }
 
-        private void Button1Click(object sender, EventArgs e)
+        private void PrintButtonClick(object sender, EventArgs e)
         {
+            parkingDatabaseFactory.SaveVehicleEntrySettings(txtVehicleEntryNumber.Text);
 
+            MessageBox.Show("Data Saved and Print");
+            Hide();
         }
     }
 }

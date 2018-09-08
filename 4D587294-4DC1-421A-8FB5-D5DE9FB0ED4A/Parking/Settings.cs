@@ -17,7 +17,7 @@ namespace Parking
 
         private void BtnSaveClick(object sender, EventArgs e)
         {
-            parkingDatabaseFactory.SaveMasterSettings(txtCompanyName.Text,
+            parkingDatabaseFactory.UpdateMasterSettings(txtCompanyName.Text,
                                                       txtParkingPlaceCode.Text,
                                                       txtParkingPlaceName.Text,
                                                       txtTwoWheelerParkingChargesPerHour.Text,

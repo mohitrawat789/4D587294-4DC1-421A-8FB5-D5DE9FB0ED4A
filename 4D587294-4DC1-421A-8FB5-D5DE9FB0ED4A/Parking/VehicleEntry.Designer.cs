@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtVehicleEntryNumber = new System.Windows.Forms.TextBox();
             this.btnPrint = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -42,12 +42,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Enter Vehicle Number";
             // 
-            // textBox1
+            // txtVehicleEntryNumber
             // 
-            this.textBox1.Location = new System.Drawing.Point(152, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(203, 22);
-            this.textBox1.TabIndex = 1;
+            this.txtVehicleEntryNumber.Location = new System.Drawing.Point(152, 83);
+            this.txtVehicleEntryNumber.Name = "txtVehicleEntryNumber";
+            this.txtVehicleEntryNumber.Size = new System.Drawing.Size(203, 22);
+            this.txtVehicleEntryNumber.TabIndex = 1;
             // 
             // btnPrint
             // 
@@ -57,17 +57,17 @@
             this.btnPrint.TabIndex = 2;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.Button1Click);
+            this.btnPrint.Click += new System.EventHandler(this.PrintButtonClick);
             // 
-            // VehicleEntryPage
+            // VehicleEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtVehicleEntryNumber);
             this.Controls.Add(this.label1);
-            this.Name = "VehicleEntryPage";
+            this.Name = "VehicleEntry";
             this.Text = "VehicleEntryPage";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -77,7 +77,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtVehicleEntryNumber;
         private System.Windows.Forms.Button btnPrint;
     }
 }

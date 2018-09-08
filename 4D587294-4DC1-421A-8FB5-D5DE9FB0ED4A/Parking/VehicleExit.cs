@@ -16,5 +16,10 @@ namespace Parking
         {
             InitializeComponent();
         }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            //Home Pay
+        }
     }
 }

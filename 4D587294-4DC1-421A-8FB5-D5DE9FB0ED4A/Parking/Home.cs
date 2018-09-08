@@ -26,11 +26,21 @@ namespace Parking
 
         }
 
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SettingsToolStripMenuItemClick(object sender, EventArgs e)
         {
-            //Hide();
             var settings = new Settings();
             settings.Show();
+        }
+
+        private void EntryToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            var vehicleEntry = new VehicleEntry();
+            vehicleEntry.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

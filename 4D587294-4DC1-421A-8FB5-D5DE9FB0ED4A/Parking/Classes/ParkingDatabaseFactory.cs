@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlTypes;
 
 namespace Parking.Classes
 {
@@ -34,15 +35,30 @@ namespace Parking.Classes
                                                         [LostTicketPenality] = '{5}',
                                                         [PLCBoardPortNumber] = '{6}' 
                                                     WHERE [Id] = '{7}'");
+
+            queries.Add("InsertVehicleEntry", @"INSERT INTO [tbl_parking]
+                                                            ([Id],
+                                                             [TicketNumber],
+                                                             [ValidationNumber],
+                                                             [QRCode],
+                                                             [VehicleNumber],
+                                                             [VehicleType],
+                                                             [EntryTime],
+                                                             [ExitTime],
+                                                             [ParkingCharge],
+                                                             [PenalityCharge],
+                                                             [TotalPaidAmount]) 
+                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')");
+
         }
 
 
-        public void SaveMasterSettings(string companyName,
+        public void UpdateMasterSettings(string companyName,
                                        string parkingPlaceCode,
                                        string parkingPlaceName,
                                        string twoWheelerParkingRatePerHour,
                                        string fourWheelerParkingRatePerHour,
-                                       string lostTicketPenality, 
+                                       string lostTicketPenality,
                                        string plcBoardPortNumber)
         {
             var query = string.Format(queries["UpdateMasterSettings"], companyName, parkingPlaceCode, parkingPlaceName,
@@ -54,7 +70,7 @@ namespace Parking.Classes
         {
             try
             {
-                var query = String.Format(queries["SelectMasterSettings"], MasterId);
+                var query = string.Format(queries["SelectMasterSettings"], MasterId);
 
                 var sqlCommand = sqlDataAccess.GetCommand(query);
 
@@ -69,5 +85,43 @@ namespace Parking.Classes
             }
 
         }
+
+        public void SaveVehicleEntrySettings(string vehicleNumber)
+        {
+            var vehicleId = 1;
+            var ticketNumber = "num";
+            var entryTime = DateTime.Now;
+            var exitTime = DateTime.Now;
+            var parkingduration = new DateTime().TimeOfDay;
+            var parkingCharge = SqlMoney.Parse("10");
+            var penaltyCharge = SqlMoney.Parse("10");
+            var paidAmout = SqlMoney.Parse("10");
+            var validationNumber = "abc";
+            var qrCode = "QRCode";
+            var vehicleType = "Four";
+            try
+            {
+                var insertQuery = string.Format(queries["InsertVehicleEntry"], vehicleId, ticketNumber, validationNumber, qrCode, vehicleNumber,
+                                                vehicleType, entryTime, exitTime, parkingCharge, penaltyCharge, paidAmout);
+                sqlDataAccess.ExecuteNonQuery(insertQuery);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
