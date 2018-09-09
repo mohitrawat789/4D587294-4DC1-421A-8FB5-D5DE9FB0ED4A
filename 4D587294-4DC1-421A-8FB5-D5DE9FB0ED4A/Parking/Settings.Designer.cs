@@ -44,6 +44,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtPLCBoardPortNumber = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnConnectPort = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSaveSettings
@@ -178,11 +179,22 @@
             this.label8.TabIndex = 28;
             this.label8.Text = "PLC Board Port Number";
             // 
+            // btnConnectPort
+            // 
+            this.btnConnectPort.Location = new System.Drawing.Point(31, 376);
+            this.btnConnectPort.Name = "btnConnectPort";
+            this.btnConnectPort.Size = new System.Drawing.Size(125, 41);
+            this.btnConnectPort.TabIndex = 30;
+            this.btnConnectPort.Text = "Test Port";
+            this.btnConnectPort.UseVisualStyleBackColor = true;
+            this.btnConnectPort.Click += new System.EventHandler(this.btnConnectPort_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 442);
+            this.Controls.Add(this.btnConnectPort);
             this.Controls.Add(this.txtPLCBoardPortNumber);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -224,6 +236,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPLCBoardPortNumber;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnConnectPort;
     }
 }
 

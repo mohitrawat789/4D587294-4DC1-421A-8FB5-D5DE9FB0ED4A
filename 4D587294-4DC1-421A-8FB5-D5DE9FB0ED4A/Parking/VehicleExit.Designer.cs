@@ -39,7 +39,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(171, 65);
+            this.label1.Location = new System.Drawing.Point(78, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 17);
             this.label1.TabIndex = 0;
@@ -47,16 +47,17 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(376, 62);
+            this.textBox1.Location = new System.Drawing.Point(42, 65);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(138, 22);
+            this.textBox1.Size = new System.Drawing.Size(222, 48);
             this.textBox1.TabIndex = 1;
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(584, 65);
+            this.btnCalculate.Location = new System.Drawing.Point(42, 136);
             this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(75, 23);
+            this.btnCalculate.Size = new System.Drawing.Size(222, 58);
             this.btnCalculate.TabIndex = 2;
             this.btnCalculate.Text = "Calculate";
             this.btnCalculate.UseVisualStyleBackColor = true;
@@ -64,16 +65,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(171, 149);
+            this.label2.Location = new System.Drawing.Point(39, 231);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(135, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Total Amount to pay";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblTotalAmount
             // 
             this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(359, 149);
+            this.lblTotalAmount.Location = new System.Drawing.Point(248, 231);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(16, 17);
             this.lblTotalAmount.TabIndex = 4;
@@ -81,9 +83,9 @@
             // 
             // btnPay
             // 
-            this.btnPay.Location = new System.Drawing.Point(251, 212);
+            this.btnPay.Location = new System.Drawing.Point(42, 283);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(92, 36);
+            this.btnPay.Size = new System.Drawing.Size(222, 45);
             this.btnPay.TabIndex = 5;
             this.btnPay.Text = "Pay";
             this.btnPay.UseVisualStyleBackColor = true;
@@ -93,7 +95,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(314, 356);
             this.Controls.Add(this.btnPay);
             this.Controls.Add(this.lblTotalAmount);
             this.Controls.Add(this.label2);

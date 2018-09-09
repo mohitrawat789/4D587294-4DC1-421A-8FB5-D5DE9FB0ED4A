@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.IO.Ports;
 using System.Windows.Forms;
 using Parking.Classes;
 
@@ -43,6 +44,21 @@ namespace Parking
             txtFourWheelerParkingChargesPerHour.Text = dr[4].ToString();
             txtLostTicketPenalty.Text = dr[5].ToString();
             txtPLCBoardPortNumber.Text = dr[6].ToString();
+        }
+
+        private void btnConnectPort_Click(object sender, EventArgs e)
+        {
+            string portName = txtPLCBoardPortNumber.Text;
+            SerialPortCommunicate serialPortCommunicate = new SerialPortCommunicate();
+
+            
+            int baudRate = Convert.ToInt32("9600");
+            Parity parity = (Parity)Enum.Parse(typeof(Parity), "None");
+            int dataBits = Convert.ToInt32("8");
+            StopBits stopBits = (StopBits)Enum.Parse(typeof(StopBits), "One");
+
+            serialPortCommunicate.Connect(portName, baudRate, parity, dataBits, stopBits);
+            
         }
     }
 }

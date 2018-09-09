@@ -37,18 +37,16 @@ namespace Parking.Classes
                                                     WHERE [Id] = '{7}'");
 
             queries.Add("InsertVehicleEntry", @"INSERT INTO [tbl_parking]
-                                                            ([Id],
-                                                             [TicketNumber],
+                                                            ([TicketNumber],
                                                              [ValidationNumber],
                                                              [QRCode],
                                                              [VehicleNumber],
                                                              [VehicleType],
-                                                             [EntryTime],
-                                                             [ExitTime],
+                                                             [EntryTime],                                                             
                                                              [ParkingCharge],
                                                              [PenalityCharge],
                                                              [TotalPaidAmount]) 
-                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')");
+                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')");
 
         }
 
@@ -86,23 +84,22 @@ namespace Parking.Classes
 
         }
 
-        public void SaveVehicleEntrySettings(string vehicleNumber)
+        public void SaveVehicleEntry(string vehicleNumber)
         {
-            var vehicleId = 1;
             var ticketNumber = "num";
             var entryTime = DateTime.Now;
-            var exitTime = DateTime.Now;
-            var parkingduration = new DateTime().TimeOfDay;
+            //var exitTime = DateTime.Now;
+            //var parkingDuration = new DateTime().TimeOfDay;
             var parkingCharge = SqlMoney.Parse("10");
             var penaltyCharge = SqlMoney.Parse("10");
             var paidAmout = SqlMoney.Parse("10");
             var validationNumber = "abc";
-            var qrCode = "QRCode";
+            var qrCode = GetQrCode();
             var vehicleType = "Four";
             try
             {
-                var insertQuery = string.Format(queries["InsertVehicleEntry"], vehicleId, ticketNumber, validationNumber, qrCode, vehicleNumber,
-                                                vehicleType, entryTime, exitTime, parkingCharge, penaltyCharge, paidAmout);
+                var insertQuery = string.Format(queries["InsertVehicleEntry"], ticketNumber, validationNumber, qrCode, vehicleNumber,
+                                                vehicleType, entryTime, parkingCharge, penaltyCharge, paidAmout);
                 sqlDataAccess.ExecuteNonQuery(insertQuery);
             }
             catch (Exception exception)
@@ -110,6 +107,12 @@ namespace Parking.Classes
                 Console.WriteLine(exception);
                 throw;
             }
+        }
+
+        private string GetQrCode()
+        {
+            // Write QR Code Generate
+            return "QRCode";
         }
     }
 }
