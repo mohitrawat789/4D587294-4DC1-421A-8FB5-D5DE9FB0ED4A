@@ -1,7 +1,9 @@
-﻿using System;
+﻿using QRCoder;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlTypes;
+using System.Linq;
 
 namespace Parking.Classes
 {
@@ -10,6 +12,7 @@ namespace Parking.Classes
         private readonly SqlDataAccess sqlDataAccess;
         private readonly Dictionary<string, string> queries = new Dictionary<string, string>();
         private const string MasterId = "4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A";
+        private const int TicketNumberLength = 10;
 
         public ParkingDatabaseFactory()
         {
@@ -52,15 +55,16 @@ namespace Parking.Classes
 
 
         public void UpdateMasterSettings(string companyName,
-                                       string parkingPlaceCode,
-                                       string parkingPlaceName,
-                                       string twoWheelerParkingRatePerHour,
-                                       string fourWheelerParkingRatePerHour,
-                                       string lostTicketPenality,
-                                       string plcBoardPortNumber)
+            string parkingPlaceCode,
+            string parkingPlaceName,
+            string twoWheelerParkingRatePerHour,
+            string fourWheelerParkingRatePerHour,
+            string lostTicketPenality,
+            string plcBoardPortNumber)
         {
             var query = string.Format(queries["UpdateMasterSettings"], companyName, parkingPlaceCode, parkingPlaceName,
-                                       twoWheelerParkingRatePerHour, fourWheelerParkingRatePerHour, lostTicketPenality, plcBoardPortNumber, MasterId);
+                                      twoWheelerParkingRatePerHour, fourWheelerParkingRatePerHour, lostTicketPenality, plcBoardPortNumber,
+                                      MasterId);
             sqlDataAccess.ExecuteNonQuery(query);
         }
 
@@ -86,15 +90,16 @@ namespace Parking.Classes
 
         public void SaveVehicleEntry(string vehicleNumber)
         {
-            var ticketNumber = "num";
+            var ticketNumber = GenerateRandomTicketNumber(TicketNumberLength);
             var entryTime = DateTime.Now;
+            var qrCode = GetQrCode(ticketNumber);
+
             //var exitTime = DateTime.Now;
             //var parkingDuration = new DateTime().TimeOfDay;
             var parkingCharge = SqlMoney.Parse("10");
             var penaltyCharge = SqlMoney.Parse("10");
             var paidAmout = SqlMoney.Parse("10");
             var validationNumber = "abc";
-            var qrCode = GetQrCode();
             var vehicleType = "Four";
             try
             {
@@ -109,22 +114,24 @@ namespace Parking.Classes
             }
         }
 
-        private string GetQrCode()
+        private static string GenerateRandomTicketNumber(int ticketNumberLength)
         {
+            var random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var ticketNumber = new string(Enumerable.Repeat(chars, ticketNumberLength)
+                                              .Select(s => s[random.Next(s.Length)]).ToArray());
+            return ticketNumber;
+        }
+
+        private static string GetQrCode(string ticketNumber)
+        {
+            var qrGenerator = new QRCodeGenerator();
+            var qrCodeData = qrGenerator.CreateQrCode(ticketNumber, QRCodeGenerator.ECCLevel.Q);
+            var qrCode = new QRCode(qrCodeData);
+            var qrCodeImage = qrCode.GetGraphic(20);
+            var myString = qrCode.ToString();
             // Write QR Code Generate
             return "QRCode";
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
