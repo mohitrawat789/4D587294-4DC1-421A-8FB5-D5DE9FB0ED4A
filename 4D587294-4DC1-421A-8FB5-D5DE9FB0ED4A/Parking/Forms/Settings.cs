@@ -1,14 +1,15 @@
-﻿
-using System;
+﻿using System;
 using System.IO.Ports;
 using System.Windows.Forms;
-using Parking.Classes;
+using Parking.Database.CommandFactory;
+using Parking.Interfaces;
+using Parking.PortCommunicate;
 
-namespace Parking
+namespace Parking.Entry.Forms
 {
     public partial class Settings : Form
     {
-        private readonly ParkingDatabaseFactory parkingDatabaseFactory;
+        private readonly IParkingDatabaseFactory parkingDatabaseFactory;
 
         public Settings()
         {
@@ -46,7 +47,7 @@ namespace Parking
             txtPLCBoardPortNumber.Text = dr[6].ToString();
         }
 
-        private void btnConnectPort_Click(object sender, EventArgs e)
+        private void BtnConnectPortClick(object sender, EventArgs e)
         {
             string portName = txtPLCBoardPortNumber.Text;
             SerialPortCommunicate serialPortCommunicate = new SerialPortCommunicate();

@@ -1,4 +1,4 @@
-﻿namespace Parking
+﻿namespace Parking.Entry.Forms
 {
     partial class Settings
     {
@@ -187,7 +187,7 @@
             this.btnConnectPort.TabIndex = 30;
             this.btnConnectPort.Text = "Test Port";
             this.btnConnectPort.UseVisualStyleBackColor = true;
-            this.btnConnectPort.Click += new System.EventHandler(this.btnConnectPort_Click);
+            this.btnConnectPort.Click += new System.EventHandler(this.BtnConnectPortClick);
             // 
             // Settings
             // 

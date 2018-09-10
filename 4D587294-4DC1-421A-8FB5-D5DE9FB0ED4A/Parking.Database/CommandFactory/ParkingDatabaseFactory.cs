@@ -1,15 +1,14 @@
-﻿using QRCoder;
+﻿using Parking.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlTypes;
-using System.Linq;
+using Parking.Common;
 
-namespace Parking.Classes
+namespace Parking.Database.CommandFactory
 {
-    public class ParkingDatabaseFactory
+    public class ParkingDatabaseFactory: IParkingDatabaseFactory
     {
-        private readonly SqlDataAccess sqlDataAccess;
+        private readonly ISqlDataAccess sqlDataAccess;
         private readonly Dictionary<string, string> queries = new Dictionary<string, string>();
         private const string MasterId = "4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A";
         private const int TicketNumberLength = 10;
@@ -45,11 +44,8 @@ namespace Parking.Classes
                                                              [QRCode],
                                                              [VehicleNumber],
                                                              [VehicleType],
-                                                             [EntryTime],                                                             
-                                                             [ParkingCharge],
-                                                             [PenalityCharge],
-                                                             [TotalPaidAmount]) 
-                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')");
+                                                             [EntryTime]) 
+                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')");
 
         }
 
@@ -90,21 +86,17 @@ namespace Parking.Classes
 
         public void SaveVehicleEntry(string vehicleNumber)
         {
-            var ticketNumber = GenerateRandomTicketNumber(TicketNumberLength);
+            var ticketNumber = AlphaNumericCode.GenerateRandomNumber(TicketNumberLength);
             var entryTime = DateTime.Now;
-            var qrCode = GetQrCode(ticketNumber);
+            // ToDo: Add uniqueness on validation number
+            var validationNumber = AlphaNumericCode.GenerateRandomNumber(TicketNumberLength);
+            var qrCode = QrCode.GenerateQrCode(vehicleNumber, validationNumber);
+            const string vehicleType = "Car";
 
-            //var exitTime = DateTime.Now;
-            //var parkingDuration = new DateTime().TimeOfDay;
-            var parkingCharge = SqlMoney.Parse("10");
-            var penaltyCharge = SqlMoney.Parse("10");
-            var paidAmout = SqlMoney.Parse("10");
-            var validationNumber = "abc";
-            var vehicleType = "Four";
             try
             {
                 var insertQuery = string.Format(queries["InsertVehicleEntry"], ticketNumber, validationNumber, qrCode, vehicleNumber,
-                                                vehicleType, entryTime, parkingCharge, penaltyCharge, paidAmout);
+                                                vehicleType, entryTime);
                 sqlDataAccess.ExecuteNonQuery(insertQuery);
             }
             catch (Exception exception)
@@ -112,26 +104,6 @@ namespace Parking.Classes
                 Console.WriteLine(exception);
                 throw;
             }
-        }
-
-        private static string GenerateRandomTicketNumber(int ticketNumberLength)
-        {
-            var random = new Random();
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var ticketNumber = new string(Enumerable.Repeat(chars, ticketNumberLength)
-                                              .Select(s => s[random.Next(s.Length)]).ToArray());
-            return ticketNumber;
-        }
-
-        private static string GetQrCode(string ticketNumber)
-        {
-            var qrGenerator = new QRCodeGenerator();
-            var qrCodeData = qrGenerator.CreateQrCode(ticketNumber, QRCodeGenerator.ECCLevel.Q);
-            var qrCode = new QRCode(qrCodeData);
-            var qrCodeImage = qrCode.GetGraphic(20);
-            var myString = qrCode.ToString();
-            // Write QR Code Generate
-            return "QRCode";
         }
     }
 }

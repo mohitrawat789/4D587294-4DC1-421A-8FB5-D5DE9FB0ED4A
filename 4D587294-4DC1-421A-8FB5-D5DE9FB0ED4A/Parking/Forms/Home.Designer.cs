@@ -1,4 +1,4 @@
-﻿namespace Parking
+﻿namespace Parking.Entry.Forms
 {
     partial class Home
     {
@@ -33,7 +33,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.parkingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
@@ -63,13 +62,11 @@
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // parkingToolStripMenuItem
             // 
             this.parkingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.entryToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.entryToolStripMenuItem});
             this.parkingToolStripMenuItem.Name = "parkingToolStripMenuItem";
             this.parkingToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
             this.parkingToolStripMenuItem.Text = "Parking";
@@ -80,13 +77,6 @@
             this.entryToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.entryToolStripMenuItem.Text = "Entry";
             this.entryToolStripMenuItem.Click += new System.EventHandler(this.EntryToolStripMenuItemClick);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -104,7 +94,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Home
             // 
@@ -130,7 +119,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem parkingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem entryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

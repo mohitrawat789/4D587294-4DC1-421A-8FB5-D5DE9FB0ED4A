@@ -1,4 +1,4 @@
-﻿namespace Parking
+﻿namespace Parking.Entry.Forms
 {
     partial class VehicleEntry
     {
@@ -84,13 +84,14 @@
             // 
             // btnOne
             // 
+            this.btnOne.BackColor = System.Drawing.Color.LightGray;
             this.btnOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOne.Location = new System.Drawing.Point(51, 171);
             this.btnOne.Name = "btnOne";
             this.btnOne.Size = new System.Drawing.Size(74, 50);
             this.btnOne.TabIndex = 3;
             this.btnOne.Text = "1";
-            this.btnOne.UseVisualStyleBackColor = true;
+            this.btnOne.UseVisualStyleBackColor = false;
             this.btnOne.Click += new System.EventHandler(this.BtnOneClick);
             // 
             // btnTwo
@@ -212,6 +213,7 @@
             this.btnPB.TabIndex = 14;
             this.btnPB.Text = "PB";
             this.btnPB.UseVisualStyleBackColor = true;
+            this.btnPB.Click += new System.EventHandler(this.BtnPbClick);
             // 
             // btnDL
             // 
@@ -222,6 +224,7 @@
             this.btnDL.TabIndex = 15;
             this.btnDL.Text = "DL";
             this.btnDL.UseVisualStyleBackColor = true;
+            this.btnDL.Click += new System.EventHandler(this.BtnDlClick);
             // 
             // btnRJ
             // 
@@ -232,6 +235,7 @@
             this.btnRJ.TabIndex = 16;
             this.btnRJ.Text = "RJ";
             this.btnRJ.UseVisualStyleBackColor = true;
+            this.btnRJ.Click += new System.EventHandler(this.BtnRjClick);
             // 
             // btnCH
             // 
@@ -242,6 +246,7 @@
             this.btnCH.TabIndex = 17;
             this.btnCH.Text = "CH";
             this.btnCH.UseVisualStyleBackColor = true;
+            this.btnCH.Click += new System.EventHandler(this.BtnChClick);
             // 
             // btnHR
             // 
@@ -252,6 +257,7 @@
             this.btnHR.TabIndex = 18;
             this.btnHR.Text = "HR";
             this.btnHR.UseVisualStyleBackColor = true;
+            this.btnHR.Click += new System.EventHandler(this.BtnHrClick);
             // 
             // btnUP
             // 
@@ -262,6 +268,7 @@
             this.btnUP.TabIndex = 19;
             this.btnUP.Text = "UP";
             this.btnUP.UseVisualStyleBackColor = true;
+            this.btnUP.Click += new System.EventHandler(this.BtnUpClick);
             // 
             // VehicleEntry
             // 

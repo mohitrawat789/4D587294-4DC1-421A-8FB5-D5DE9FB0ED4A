@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using Parking.Classes;
+using Parking.Database.CommandFactory;
 
-namespace Parking
+namespace Parking.Entry.Forms
 {
     public partial class VehicleEntry : Form
     {
@@ -17,7 +17,13 @@ namespace Parking
         private void OkButtonClick(object sender, EventArgs e)
         {
             parkingDatabaseFactory.SaveVehicleEntry(txtVehicleNumber.Text);
+            // Connect to printer on fly 
+            // Through error if printer not found
+            // Ticket print
+
+            // Back to main page
             MessageBox.Show("VehicleEnteredSuccessfully");
+            Console.WriteLine("Print");
             Hide();
         }
 
@@ -28,6 +34,7 @@ namespace Parking
 
         private void BtnOneClick(object sender, EventArgs e)
         {
+            // Generalized method for common code
             txtVehicleNumber.Text += btnOne.Text;
         }
 
@@ -83,6 +90,36 @@ namespace Parking
             {
                 txtVehicleNumber.Text = txtVehicleNumber.Text.Remove(length - 1);
             }
+        }
+
+        private void BtnHrClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnUpClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnPbClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnChClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDlClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnRjClick(object sender, EventArgs e)
+        {
+
         }
     }
 }

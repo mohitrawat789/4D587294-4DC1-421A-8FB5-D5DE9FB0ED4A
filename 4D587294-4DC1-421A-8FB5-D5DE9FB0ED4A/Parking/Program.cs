@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using Parking.Entry.Forms;
 
-namespace Parking
+namespace Parking.Entry
 {
     static class Program
     {
