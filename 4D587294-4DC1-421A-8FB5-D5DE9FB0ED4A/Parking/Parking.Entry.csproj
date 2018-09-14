@@ -99,6 +99,10 @@
     <Folder Include="Images\QRCodes\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Parking.Common\Parking.Common.csproj">
+      <Project>{0606507D-1F91-45CD-89B2-8EF5DDEFE7EC}</Project>
+      <Name>Parking.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Parking.Database\Parking.Database.csproj">
       <Project>{11341886-B081-4436-97C1-8F070EE65C31}</Project>
       <Name>Parking.Database</Name>

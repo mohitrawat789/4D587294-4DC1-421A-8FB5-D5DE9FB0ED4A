@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Parking.Entry.Forms
@@ -20,6 +21,16 @@ namespace Parking.Entry.Forms
         {
             var vehicleEntry = new VehicleEntry();
             vehicleEntry.Show();
+        }
+
+        private void HomeLoad(object sender, EventArgs e)
+        {
+
+            FormBorderStyle = FormBorderStyle.None;
+
+            WindowState = FormWindowState.Maximized;
+
+            Size = new Size(1024, 768);
         }
     }
 }

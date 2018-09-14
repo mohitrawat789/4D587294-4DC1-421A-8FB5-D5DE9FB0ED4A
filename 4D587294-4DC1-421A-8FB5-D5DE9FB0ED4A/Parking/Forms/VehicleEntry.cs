@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Parking.Database.CommandFactory;
 
@@ -17,70 +18,67 @@ namespace Parking.Entry.Forms
         private void OkButtonClick(object sender, EventArgs e)
         {
             parkingDatabaseFactory.SaveVehicleEntry(txtVehicleNumber.Text);
-            // Connect to printer on fly 
-            // Through error if printer not found
-            // Ticket print
 
-            // Back to main page
-            MessageBox.Show("VehicleEnteredSuccessfully");
+            //var printer = new Printer();
+            //printer.PrintTicket(txtVehicleNumber.Text);
             Console.WriteLine("Print");
             Hide();
         }
 
-        private void TxtVehicleEntryNumberTextChanged(object sender, EventArgs e)
+        private void AddText(string postfixText)
         {
-
+            txtVehicleNumber.Text += postfixText;
         }
 
         private void BtnOneClick(object sender, EventArgs e)
         {
-            // Generalized method for common code
-            txtVehicleNumber.Text += btnOne.Text;
+            AddText(btnOne.Text);
         }
+
 
         private void BtnTwoClick(object sender, EventArgs e)
         {
-            txtVehicleNumber.Text += btnTwo.Text;
+            AddText(btnTwo.Text);
         }
 
         private void BtnThreeClick(object sender, EventArgs e)
         {
-            txtVehicleNumber.Text += btnThree.Text;
+            AddText(btnThree.Text);
         }
 
         private void BtnFourClick(object sender, EventArgs e)
         {
-            txtVehicleNumber.Text += btnFour.Text;
+            AddText(btnFour.Text);
         }
 
         private void BtnFiveClick(object sender, EventArgs e)
         {
-            txtVehicleNumber.Text += btnFive.Text;
+            AddText(btnFive.Text);
         }
 
         private void BtnSixClick(object sender, EventArgs e)
         {
-            txtVehicleNumber.Text += btnSix.Text;
+            AddText(btnSix.Text);
         }
 
         private void BtnSevenClick(object sender, EventArgs e)
         {
-            txtVehicleNumber.Text += btnSeven.Text;
+            AddText(btnSeven.Text);
         }
 
         private void BtnEigthClick(object sender, EventArgs e)
         {
-            txtVehicleNumber.Text += btnEigth.Text;
+            AddText(txtVehicleNumber.Text += btnEigth.Text);
         }
 
         private void BtnNineClick(object sender, EventArgs e)
         {
-            txtVehicleNumber.Text += btnNine.Text;
+            AddText(btnNine.Text);
         }
 
         private void BtnZeroClick(object sender, EventArgs e)
         {
-            txtVehicleNumber.Text += btnZero.Text;
+            AddText(btnZero.Text);
         }
 
         private void BtnBackSpaceClick(object sender, EventArgs e)
@@ -94,32 +92,41 @@ namespace Parking.Entry.Forms
 
         private void BtnHrClick(object sender, EventArgs e)
         {
-
+            AddText(btnHR.Text);
         }
 
         private void BtnUpClick(object sender, EventArgs e)
         {
-
+            AddText(btnUP.Text);
         }
 
         private void BtnPbClick(object sender, EventArgs e)
         {
-
+            AddText(btnPB.Text);
         }
 
         private void BtnChClick(object sender, EventArgs e)
         {
-
+            AddText(btnCH.Text);
         }
 
         private void BtnDlClick(object sender, EventArgs e)
         {
-
+            AddText(btnDL.Text);
         }
 
         private void BtnRjClick(object sender, EventArgs e)
         {
+            AddText(btnRJ.Text);
+        }
 
+        private void VehicleEntryLoad(object sender, EventArgs e)
+        {
+            FormBorderStyle = FormBorderStyle.None;
+
+            WindowState = FormWindowState.Maximized;
+
+            Size = new Size(1024, 768);
         }
     }
 }

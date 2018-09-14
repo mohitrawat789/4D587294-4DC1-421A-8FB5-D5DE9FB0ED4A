@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.IO.Ports;
+using System.Threading;
 using System.Windows.Forms;
 using Parking.Database.CommandFactory;
 using Parking.Interfaces;
@@ -32,6 +34,12 @@ namespace Parking.Entry.Forms
 
         private void SettingsLoad(object sender, EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.None;
+
+            WindowState = FormWindowState.Maximized;
+
+            Size = new Size(1024, 768);
+
             LoadSettings();
         }
 
@@ -52,14 +60,29 @@ namespace Parking.Entry.Forms
             string portName = txtPLCBoardPortNumber.Text;
             SerialPortCommunicate serialPortCommunicate = new SerialPortCommunicate();
 
-            
+
             int baudRate = Convert.ToInt32("9600");
             Parity parity = (Parity)Enum.Parse(typeof(Parity), "None");
             int dataBits = Convert.ToInt32("8");
             StopBits stopBits = (StopBits)Enum.Parse(typeof(StopBits), "One");
 
             serialPortCommunicate.Connect(portName, baudRate, parity, dataBits, stopBits);
-            
+            serialPortCommunicate.RegisterVehicleEntryCallBack(HandleVehicleEntryData);
+
+        }
+
+        private void HandleVehicleEntryData(string obj)
+        {
+            ThreadPool.QueueUserWorkItem(VehicleLaunch);
+        }
+
+        private void VehicleLaunch(object state)
+        {
+            Invoke((Action)(() =>
+            {
+                var vehicleEntry = new VehicleEntry();
+                vehicleEntry.Show();
+            }));
         }
     }
 }
